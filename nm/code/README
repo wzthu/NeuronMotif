@@ -4,6 +4,7 @@ How to use:
 install anaconda
 conda create -n NeuronMotif python=3.6
 conda  activate NeuronMotif
+pip install h5py==2.10.0
 pip install matplotlib
 pip install pandas
 pip install numpy

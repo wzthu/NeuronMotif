@@ -1,8 +1,0 @@
-If you are the new user of NeuronMotif, please go to "code/" folder.
-
-The README in "code/" shows the step by step instructions to install and run NeuronMotif.
-
-To run NeuronMotif and get the result for the model Basset, BD-5 and BD-10, please go to directory "Basset/Basset", "Basset/BD-5" and "Basset/BD-10" 
-
-To run NeuronMotif and get the result for the model DeepSEA and DD-10, please go to directory "DeepSEA/DeepSEA" and "DeepSEA/DD-10"
-

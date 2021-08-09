@@ -1,5 +1,0 @@
-Run NeuronMotif:
-
-sh run.layer.sh 1 320 20
-sh run.layer.sh 2 480 20
-sh run.layer.sh 3 960 20

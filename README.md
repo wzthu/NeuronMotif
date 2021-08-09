@@ -48,6 +48,34 @@ pip install keras==2.3.1
 
 ```
 
+
+## Install visualization dependences
+
+Download and install meme-suit to get tomtom first:
+
+version: 5.1.0, later version does not support >100 bp receptive field.
+
+https://meme-suite.org/meme/meme-software/5.1.0/meme-5.1.0.tar.gz
+https://meme-suite.org/meme/tools/tomtom
+
+and add it to PATH environment variable or execute
+
+```
+export PATH=/path/to/meme/bin:/path/to/meme:/path/to/meme/libexec/meme-x.x.0:$PATH
+```
+
+Test following commands:
+
+```
+tomtom -h
+```
+and
+
+```
+chen2meme  -h
+```
+
+
 ## Ready to use
 
 This command line should be executed every time you enter the terminal before using NeuronMotif

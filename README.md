@@ -20,4 +20,38 @@ NeuronMotif is an algorithm for interpreting the patterns learned by deep convol
 
 Result is available at [NeuronMotif website](https://wzthu.github.io/NeuronMotif/).
 
+# Installation
 
+## Install anaconda
+
+Download and install (anaconda)[https://www.anaconda.com/products/individual].
+
+## Create the  NeuronMotif environment
+
+NeuronMotif is implemented and tested in python 3.6.
+
+```
+conda create -n NeuronMotif python=3.6
+```
+
+## Install dependent packages
+
+```
+conda activate NeuronMotif
+pip install h5py==2.10.0
+pip install matplotlib
+pip install pandas
+pip install numpy
+pip install sklearn
+pip install tensorflow==1.15.0
+pip install keras==2.3.1
+
+```
+
+## Ready to use
+
+This command line should be executed every time you enter the terminal before using NeuronMotif
+
+```
+conda activate NeuronMotif
+```

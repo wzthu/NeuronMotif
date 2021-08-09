@@ -60,7 +60,7 @@ sh run.layer.sh 3 960 5
 
 # Convert to motif file
 
-The arameter is the layer number:
+The parameter is the layer number:
 
 ```
 python tochen.py 1
@@ -83,39 +83,14 @@ The motif file is xxx.chen in corresponding layer folder
 
 These steps are optional for NeuronMotif.
 
-## Install visualization dependences
-
-Download and install meme-suit to get tomtom first:
-
-version: 5.1.0, later version does not support >100 bp receptive field.
-
-https://meme-suite.org/meme/meme-software/5.1.0/meme-5.1.0.tar.gz
-https://meme-suite.org/meme/tools/tomtom
-
-and add it to PATH environment variable or execute
-
-```
-export PATH=/path/to/meme/bin:/path/to/meme:/path/to/meme/libexec/meme-x.x.0:$PATH
-```
-
-Test following commands:
-
-```
-tomtom
-```
-and 
-
-```
-chen2meme
-```
-
-
 ## Download motif database
 
 Take JASPAR as an example:
 
-wget http://jaspar.genereg.net/download/CORE/JASPAR2020_CORE_vertebrates_redundant_pfms_meme.txt
-mv JASPAR2020_CORE_vertebrates_redundant_pfms_meme.txt  motifDB.txt
+```
+wget -O  motifDB.txt  http://jaspar.genereg.net/download/CORE/JASPAR2020_CORE_vertebrates_redundant_pfms_meme.txt
+```
+
 
 ## Visualization through run visualization script 'vis.layer.sh'.
 
@@ -129,9 +104,11 @@ For example:
 
 Our server contains  28 cores server 128GB memory
 
+```
 sh vis.layer.sh 1  28
 sh vis.layer.sh 2  28
 sh vis.layer.sh 3  28
+```
 
 The results of  HTML files in vis folder of corresponding layer folder.
 

@@ -25,7 +25,7 @@ cp xxx/xxx/weight.deep.h5 ~/mymodel/weight.hdf5
 
 Modify ND/modeldef.py in ND according to the your DCNN model strucutre.
 You need to follow the comments in modeldef.py to modified the modeldef.py.
-We show the examples for DeepSEA, DD-10, Basset, BD-5, BD-10. You can learn the examples of these models.
+We show the examples for DeepSEA, DD-10, Basset, BD-5, BD-10. It is easy to learn the way to fill your own structure from  the examples of these models.
 
 
 
@@ -53,9 +53,16 @@ Our server contains 28 cores server 128GB memory.
 The script can be submited at the same directory at each node of the cluster.
 
 ```
-sh run.layer.sh 1 320 20  
-sh run.layer.sh 2 480 5
-sh run.layer.sh 3 960 5
+sh run.layer.sh 1 128 20
+sh run.layer.sh 2 128 20
+sh run.layer.sh 3 160 20
+sh run.layer.sh 4 160 20
+sh run.layer.sh 5 256 20
+sh run.layer.sh 6 256 20
+sh run.layer.sh 7 384 20
+sh run.layer.sh 8 384 20
+sh run.layer.sh 9 512 20
+sh run.layer.sh 10 512 20
 ```
 
 # Convert to motif file
@@ -66,6 +73,13 @@ The parameter is the layer number:
 python tochen.py 1
 python tochen.py 2
 python tochen.py 3
+python tochen.py 4
+python tochen.py 5
+python tochen.py 6
+python tochen.py 7
+python tochen.py 8
+python tochen.py 9
+python tochen.py 10
 ```
 
 For model generated from  DeepSEA data please run the following scripts instead.
@@ -105,9 +119,16 @@ For example:
 Our server contains  28 cores server 128GB memory
 
 ```
-sh vis.layer.sh 1  28
-sh vis.layer.sh 2  28
-sh vis.layer.sh 3  28
+sh vis.layer.sh 1 28
+sh vis.layer.sh 2 28
+sh vis.layer.sh 3 28
+sh vis.layer.sh 4 28
+sh vis.layer.sh 5 28
+sh vis.layer.sh 6 28
+sh vis.layer.sh 7 28
+sh vis.layer.sh 8 28
+sh vis.layer.sh 9 28
+sh vis.layer.sh 10 28
 ```
 
 The results of  HTML files in vis folder of corresponding layer folder.

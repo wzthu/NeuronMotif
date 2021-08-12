@@ -11,4 +11,4 @@ mv data/* ./
 
 # Reference
 
-Kelley, D. R., Snoek, J., & Rinn, J. L. (2016). Basset: learning the regulatory code of the accessible genome with deep convolutional neural networks. Genome research, 26(7), 990-999.
+Jian Zhou, Olga G. Troyanskaya. Predicting the Effects of Noncoding Variants with Deep learning-based Sequence Model. Nature Methods (2015).

@@ -83,6 +83,8 @@ HTML::Template missing.
 
 HTML::TreeBuilder missing.
 
+JSON missing.
+
 
 ```
 tar zxf meme-5.1.0.tar.gz

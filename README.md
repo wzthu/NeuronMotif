@@ -31,6 +31,8 @@ Result is available at [NeuronMotif website](https://wzthu.github.io/NeuronMotif
 
 # Installation
 
+We test this repository in a CentOS 7 computer cluster with 4 node, each of which contains 28 cores, 128 GB memory. About 10TB is consumed for otaining the result of all examples in the manuscripts. The installation last for ~10 min if there is no more dependent packages.
+
 ## Install anaconda
 
 Download and install (anaconda)[https://www.anaconda.com/products/individual].
@@ -72,6 +74,16 @@ wget https://meme-suite.org/meme/meme-software/5.1.0/meme-5.1.0.tar.gz
 ```
 
 Install:
+
+***Note: in the configure warnings, HTML related perl dependent should be solved:***
+
+File::Which missing.
+
+HTML::Template missing.
+
+HTML::TreeBuilder missing.
+
+
 ```
 tar zxf meme-5.1.0.tar.gz
 cd meme-5.1.0
@@ -81,7 +93,8 @@ make test
 make install
 ```
 
-and add it to PATH environment variable or execute
+
+Add it to PATH environment variable or execute:
 
 ```
 export PATH=$HOME/meme/bin:$HOME/meme/libexec/meme-5.1.0:$PATH

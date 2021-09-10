@@ -2,7 +2,7 @@
 
 This repository implements the NeuronMotif algorithm in ["NeuronMotif: Deciphering cis-regulatory codes by layerwise de-mixing of deep neural networks"](https://www.biorxiv.org/content/10.1101/2021.02.10.430606v1) by Zheng Wei et al.
 
-This repository includes the code for generating the result in the paper.
+This repository includes the code for generating the result in the paper. We also provide the instructions for users to apply NeuronMotif to their own model in this repository. 
 
 Feel free to contact Zheng Wei for any issues or difficulties:
 + Email: weiz(at)tsinghua.edu.cn
@@ -31,7 +31,7 @@ Result is available at [NeuronMotif website](https://wzthu.github.io/NeuronMotif
 
 # Installation
 
-We test this repository in a CentOS 7 computer cluster with 4 node, each of which contains 28 cores, 128 GB memory. About 10TB is consumed for otaining the result of all examples in the manuscripts. The installation last for ~10 min if there is no more dependent packages.
+We test this repository in a CentOS 7 computer cluster with 4 nodes, each of which contains 28 cores and 128 GB memory. About 10 TB is consumed for obtaining the result of all examples in the manuscripts. The installation lasts for ~10 min if there are no more dependent packages.
 
 ## Install anaconda
 

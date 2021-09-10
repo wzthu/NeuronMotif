@@ -31,7 +31,7 @@ Be carefule to set large threads. The memory is easy to be stuffed.
 
 For example:
 
-# 28 cores server 128GB memory
+***28 cores server 128GB memory***
 
 ***Note: only the last layer is done, the next layer can be started.***
 ```

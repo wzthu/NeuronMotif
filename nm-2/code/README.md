@@ -11,7 +11,7 @@ The parameter of runlink.sh:
 2nd, layer?
 3st, the number of the kernel
 
-2 Download motif database
+2. Download motif database
 
 Take JASPAR as an example:
 

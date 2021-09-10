@@ -98,6 +98,12 @@ and
 chen2meme  -h
 ```
 
+## Clone this repository:
+
+```
+git clone https://github.com/wzthu/NeuronMotif
+```
+
 
 ## Ready to use
 
@@ -107,8 +113,3 @@ This command line should be executed every time you enter the terminal before us
 conda activate NeuronMotif
 ```
 
-Clone this repository:
-
-```
-git clone https://github.com/wzthu/NeuronMotif
-```

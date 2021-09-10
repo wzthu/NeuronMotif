@@ -2,7 +2,7 @@
 
 This repository implements the NeuronMotif algorithm in ["NeuronMotif: Deciphering cis-regulatory codes by layerwise de-mixing of deep neural networks"](https://www.biorxiv.org/content/10.1101/2021.02.10.430606v1) by Zheng Wei et al.
 
-This repository includes the code for generating the published result.
+This repository includes the code for generating the result in the paper.
 
 Feel free to contact Zheng Wei for any issues or difficulties:
 + Email: weiz(at)tsinghua.edu.cn

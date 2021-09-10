@@ -2,7 +2,7 @@ For each layer do:
 # 1. link the ppm files of interested layer
 
 ```
-sh runlink.sh ../../../../nm/DeepSEA/DeepSEA/layer3 layer3 960
+bash runlink.sh ../../../../nm/DeepSEA/DeepSEA/layer3 layer3 960
 ```
 
 The parameter of runlink.sh:
@@ -36,5 +36,5 @@ For example:
 Our server: 28 cores server 128GB memory
 
 ```
-sh run.layer.tt.sh 3 960 20 1
+bash run.layer.tt.sh 3 960 20 1
 ```

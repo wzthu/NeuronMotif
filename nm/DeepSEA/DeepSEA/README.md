@@ -9,16 +9,20 @@ conda  activate NeuronMotif
 
 # Download the weight file
 
+Download and rename weight file as 'weight.hdf5':
+
 ```
-wget -O weight.hdf5 https://cloud.tsinghua.edu.cn/d/fee522536d524eae9531/files/?p=%2FDCNN_weight%2FDeepSEA%2FDeepSEA%2Fweight.hdf5&dl=1
+wget  --no-check-certificate -O weight.hdf5  https://bioinfo.au.tsinghua.edu.cn/member/zwei/NeuronMotif/DCNN_weight/DeepSEA/DeepSEA/weight.hdf5
 ```
+
+Alternatively, if the link above is not available temperately, you can download from https://cloud.tsinghua.edu.cn/d/fee522536d524eae9531/files/?p=%2FDCNN_weight%2FDeepSEA%2FDeepSEA%2Fweight.hdf5&dl=1
 
 # Run NeuronMotif:
 
 ```
-sh run.layer.sh 1 320 20
-sh run.layer.sh 2 480 20
-sh run.layer.sh 3 960 20
+bash run.layer.sh 1 320 20
+bash run.layer.sh 2 480 20
+bash run.layer.sh 3 960 20
 ```
 
 ```
@@ -38,9 +42,9 @@ wget -O  motifDB.txt  http://jaspar.genereg.net/download/CORE/JASPAR2020_CORE_ve
 Match the discovered motif to JASPAR database:
 
 ```
-sh vis.layer.sh 1 28
-sh vis.layer.sh 2 28
-sh vis.layer.sh 3 28
+bash vis.layer.sh 1 28
+bash vis.layer.sh 2 28
+bash vis.layer.sh 3 28
 ```
 
 

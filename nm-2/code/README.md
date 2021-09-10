@@ -33,7 +33,7 @@ For example:
 
 # 28 cores server 128GB memory
 
-# Note: only the last layer is done, the next layer can be started.
+***Note: only the last layer is done, the next layer can be started.***
 ```
 bash run.layer.sh 1 320 28 1
 bash run.layer.sh 2 480 28 1

@@ -60,23 +60,14 @@ def crelu(x, alpha=0.0, max_value=None, threshold=1e-6):
 
 def get_whole_model():
         seqInput = Input(shape=(input_bp, 4), name='seqInput')
-        seq = Conv1D(128, 7)(seqInput)
+        seq = Conv1D(64, 3)(seqInput)
         seq = BatchNormalization()(seq)
         seq = Activation('relu')(seq)
+        seq = MaxPooling1D(2)(seq)
         seq = Conv1D(128, 3)(seq)
         seq = BatchNormalization()(seq)
         seq = Activation('relu')(seq)
         seq = MaxPooling1D(2)(seq)
-        seq = Conv1D(160, 3)(seq)
-        seq = BatchNormalization()(seq)
-        seq = Activation('relu')(seq)
-        seq = Conv1D(160, 3)(seq)
-        seq = BatchNormalization()(seq)
-        seq = Activation('relu')(seq)
-        seq = MaxPooling1D(2)(seq)
-        seq = Conv1D(256, 3)(seq)
-        seq = BatchNormalization()(seq)
-        seq = Activation('relu')(seq)
         seq = Conv1D(256, 3)(seq)
         seq = BatchNormalization()(seq)
         seq = Activation('relu')(seq)
@@ -84,32 +75,25 @@ def get_whole_model():
         seq = Conv1D(384, 3)(seq)
         seq = BatchNormalization()(seq)
         seq = Activation('relu')(seq)
-        seq = Conv1D(384, 3)(seq)
-        seq = BatchNormalization()(seq)
-        seq = Activation('relu')(seq)
         seq = MaxPooling1D(2)(seq)
-        seq = Conv1D(512, 3)(seq)
-        seq = BatchNormalization()(seq)
-        seq = Activation('relu')(seq)
         seq = Conv1D(512, 3)(seq)
         seq = BatchNormalization()(seq)
         seq = Activation('relu')(seq)
         seq = Flatten()(seq)
-        seq = Dropout(0.2)(seq)
-        seq = Dense(768)(seq)
+        seq = Dense(1024)(seq)
         seq = BatchNormalization()(seq)
         seq = Activation('relu')(seq)
+        seq = Dropout(0.2)(seq)
         seq = Dense(164)(seq)
-        seq = BatchNormalization()(seq)
         seq = Activation('sigmoid')(seq)
         return Model(inputs = [seqInput], outputs = [seq])
 
 def get_model_list(layer, kernel, weight_file='weight.hdf5'):
     model = get_whole_model()
     model.load_weights(weight_file)
-    kernel_nb = [128,128,160,160,256,256,384,384,512,512]
-    kernel_sz = [7,3,3,3,3,3,3,3,3,3]
-    pool_sz = [1,2,1,2,1,2,1,2,1,2]
+    kernel_nb = [64,128,256,384,512]
+    kernel_sz = [3,3,3,3,3]
+    pool_sz = [2,2,2,2]
     input_bps = [getRF(i,kernel_sz, pool_sz) for i in range(len(kernel_sz))] # [8, 39, 163]
     input_bp = input_bps[layer-1]
     seqInput = Input(shape=(input_bp, 4), name='subseqInput')
@@ -117,12 +101,13 @@ def get_model_list(layer, kernel, weight_file='weight.hdf5'):
     model_list = []
     act_model_list = []
     out_list = []
-    seq = Conv1D(128, 7)(seqInput)
+    seq = Conv1D(64, 3)(seqInput)
     act_model_list.append(Model(inputs = [seqInput], outputs = [seq]))
     seq = BatchNormalization()(seq)
     model_list.append(Model(inputs = [seqInput], outputs = [seq]))
     if layer > 1:
         seq = Activation('relu')(seq)
+        seq = MaxPooling1D(2)(seq)
         seq = Conv1D(128, 3)(seq)
         act_model_list.append(Model(inputs = [seqInput], outputs = [seq]))
         seq = BatchNormalization()(seq)
@@ -130,51 +115,20 @@ def get_model_list(layer, kernel, weight_file='weight.hdf5'):
     if layer > 2:
         seq = Activation('relu')(seq)
         seq = MaxPooling1D(2)(seq)
-        seq = Conv1D(160, 3)(seq)
+        seq = Conv1D(256, 3)(seq)
         act_model_list.append(Model(inputs = [seqInput], outputs = [seq]))
         seq = BatchNormalization()(seq)
         model_list.append(Model(inputs = [seqInput], outputs = [seq]))
     if layer > 3:
         seq = Activation('relu')(seq)
-        seq = Conv1D(160, 3)(seq)
+        seq = MaxPooling1D(2)(seq)
+        seq = Conv1D(384, 3)(seq)
         act_model_list.append(Model(inputs = [seqInput], outputs = [seq]))
         seq = BatchNormalization()(seq)
         model_list.append(Model(inputs = [seqInput], outputs = [seq]))
     if layer > 4:
         seq = Activation('relu')(seq)
         seq = MaxPooling1D(2)(seq)
-        seq = Conv1D(256, 3)(seq)
-        act_model_list.append(Model(inputs = [seqInput], outputs = [seq]))
-        seq = BatchNormalization()(seq)
-        model_list.append(Model(inputs = [seqInput], outputs = [seq]))
-    if layer > 5:
-        seq = Activation('relu')(seq)
-        seq = Conv1D(256, 3)(seq)
-        act_model_list.append(Model(inputs = [seqInput], outputs = [seq]))
-        seq = BatchNormalization()(seq)
-        model_list.append(Model(inputs = [seqInput], outputs = [seq]))
-    if layer > 6:
-        seq = Activation('relu')(seq)
-        seq = MaxPooling1D(2)(seq)
-        seq = Conv1D(384, 3)(seq)
-        act_model_list.append(Model(inputs = [seqInput], outputs = [seq]))
-        seq = BatchNormalization()(seq)
-        model_list.append(Model(inputs = [seqInput], outputs = [seq]))
-    if layer > 7:
-        seq = Activation('relu')(seq)
-        seq = Conv1D(384, 3)(seq)
-        act_model_list.append(Model(inputs = [seqInput], outputs = [seq]))
-        seq = BatchNormalization()(seq)
-        model_list.append(Model(inputs = [seqInput], outputs = [seq]))
-    if layer > 8:
-        seq = Activation('relu')(seq)
-        seq = MaxPooling1D(2)(seq)
-        seq = Conv1D(512, 3)(seq)
-        act_model_list.append(Model(inputs = [seqInput], outputs = [seq]))
-        seq = BatchNormalization()(seq)
-        model_list.append(Model(inputs = [seqInput], outputs = [seq]))
-    if layer > 9:
-        seq = Activation('relu')(seq)
         seq = Conv1D(512, 3)(seq)
         act_model_list.append(Model(inputs = [seqInput], outputs = [seq]))
         seq = BatchNormalization()(seq)

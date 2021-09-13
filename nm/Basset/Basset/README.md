@@ -12,7 +12,7 @@ conda  activate NeuronMotif
 Download and rename weight file as 'weight.hdf5':
 
 ```
-wget  --no-check-certificate -O weight.hdf5  https://bioinfo.au.tsinghua.edu.cn/member/zwei/NeuronMotif/DCNN_weight/Basset/Basset/weight.hdf5
+wget  --no-check-certificate -O weight.hdf5  http://bioinfo-xwwang-thu.cn/zwei/NeuronMotif/DCNN_weight/Basset/Basset/weight.hdf5
 ```
 
 Alternatively, if the link above is not available temperately, you can download from https://cloud.tsinghua.edu.cn/d/fee522536d524eae9531/files/?p=%2FDCNN_weight%2FBasset%2FBasset%2Fweight.hdf5&dl=1 

@@ -17,7 +17,7 @@ ppm = allppm[0,:,:]
 kernel_nb,kernel_sz,pool_sz,input_bp, input_bps, model_list, act_model_list, gd = get_model_list(layer = layer, kernel = 0, weight_file='weight.hdf5')
 #decouple = int(3)
 decouple = 1
-for i in range(layer):
+for i in range(layer-1):
     decouple *= pool_sz[i]
 
 
@@ -40,7 +40,7 @@ border:1px solid black;
 </style>
     %s
     <br/>
-    Visit NeuronMotif website for full results: 
+    NeuronMotif website: 
     <a href="https://wzthu.github.io/NeuronMotif/">https://wzthu.github.io/NeuronMotif/</a>
     <br/>
     Please wait patiently for all motif logos or patterns in the column of CN motifs to load ...
@@ -101,7 +101,7 @@ for i in range(allppm.shape[0]):
         ppm_id = '%04d_%04d_%.4f_%.4f_%d' % (i/decouple,i%decouple,act[i], conact[i],spnumb[i])
         ppm_js = ppm2js(allppm[i,:,:], ppm_id, width, height)
         ppm_jss.append(ppm_js)
-        ppm_ids.append('<tr><td>%04d</td><td>%04d</td><td>%.4f</td><td>%.4f</td><td>%d</td><td><a href="%s/vis/result/%d.chen/%d.chen.out/tomtom.html">TomtomLink</a></td><td><canvas id="%s"></canvas></td></tr>' % (i/decouple,i%decouple,act[i], conact[i],spnumb[i], folder,i,i, ppm_id))
+        ppm_ids.append('<tr><td>%04d</td><td>%04d</td><td>%.4f</td><td>%.4f</td><td>%d</td><td><a href="%d.chen/%d.chen.out/tomtom.html">TomtomLink</a></td><td><canvas id="%s"></canvas></td></tr>' % (i/decouple,i%decouple,act[i], conact[i],spnumb[i], i,i, ppm_id))
         count += 1
     if (count > 1000 and (count % decouple)==0) or i == allppm.shape[0]-1:
         html_txt1 = html_txt % ('Page '+ ' '.join(['<a href="'+filelist[i]+'">'+str(i)+'</a>' for i in range(len(filelist))]),

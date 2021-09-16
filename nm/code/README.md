@@ -50,7 +50,6 @@ Our server contains 28 cores server 128GB memory.
 
 ***Note***: only the last layer is done, the next layer can be started.
 
-The script can be submited at the same directory at each node of the cluster.
 
 ```
 bash run.layer.sh 1 128 20

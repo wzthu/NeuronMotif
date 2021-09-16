@@ -40,7 +40,7 @@ border:1px solid black;
 </style>
     %s
     <br/>
-    NeuronMotif website:
+    Visit NeuronMotif website for full results: 
     <a href="https://wzthu.github.io/NeuronMotif/">https://wzthu.github.io/NeuronMotif/</a>
     <br/>
     Please wait patiently for all motif logos or patterns in the column of CN motifs to load ...

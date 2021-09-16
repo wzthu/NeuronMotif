@@ -56,6 +56,7 @@ for i in range(layer-1):
     total *= pool_sz[i]
 
 for kernel in range(kernel_nb[layer-1]):
+    print(kernel)
     with h5py.File('layer'+str(layer)+'/kernel-'+str(kernel)+'.ppm.h5','r') as f:
         for j in range(total):
             if 'ppm' + str(j) in f.keys():

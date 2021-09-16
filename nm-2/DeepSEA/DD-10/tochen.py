@@ -1,15 +1,10 @@
-maxactp = 1
-conactp = 1
-
-
 import sys
 layer = str(sys.argv[1])
 kernel = str(sys.argv[2])
-isDeepSEA = False
-if len(sys.argv)==3:
-    if sys.argv[3]=='1':
-        isDeepSEA = True
-        
+if len(sys.argv)> 3:
+    deepsea = int(sys.argv[3])
+else:
+    deepsea = 0
 import numpy as np
 import h5py
 #layer = '10'
@@ -27,13 +22,14 @@ actlist = []
 conactlist = []
 codelist = []
 for i in range(psize):
-    code = str(i)
+    for j in range(psize):
+        code = str(i)+'_'+str(j)
+        if 'act'+code not in list(f.keys()):
+            continue
 #        print(code)
-    if 'act'+code not in list(f.keys()):
-        continue
-    actlist.append(f['act'+code][:].max())
-    conactlist.append(f['conact'+code][:])
-    codelist.append(code)
+        actlist.append(f['act'+code][:].max())
+        conactlist.append(f['conact'+code][:])
+        codelist.append(code)
 
 import pandas as pd
 
@@ -41,11 +37,11 @@ df = pd.DataFrame({'code':codelist,'act':actlist,'conact':conactlist})
 
 tt = df.shape[0]
 
-df = df.iloc[np.argsort(df.loc[:,'act'])[::-1][0:int(tt/maxactp)],:]
+df = df.iloc[np.argsort(df.loc[:,'act'])[::-1][0:int(tt/4)],:]
 
 tt = df.shape[0]
 
-df = df.iloc[np.argsort(df.loc[:,'conact'])[::-1][0:int(tt/conactp)],:]
+df = df.iloc[np.argsort(df.loc[:,'conact'])[::-1][0:int(tt/4)],:]
 
 
 
@@ -54,22 +50,23 @@ smlines = []
 lines1 = []
 lines2 = []
 for i in range(psize):
-        code = str(i)
+    for j in range(psize):
+        code = str(i)+'_'+str(j)
         if 'act'+code not in list(f.keys()):
             continue
         act = f['act'+code][:]
         conact = f['conact'+code][:]
         ppm = f['ppm'+code][:]
-        if isDeepSEA:
+        if deepsea:
             ppm = ppm[:,[0,2,1,3]]
         spnumb = act.shape[0]
-        lines.append('>%04d_%d_%.4f_%.4f\n' %(i,spnumb, act.max(), conact))
+        lines.append('>%04d_%04d_%d_%.4f_%.4f\n' %(i,j,spnumb, act.max(), conact))
         for k in range(ppm.shape[0]):
             lines.append('\t'.join(list(np.array(np.array(ppm[k,:]*1000,dtype=int),dtype=str))) + '\n')
         lines.append('\n')
         smppm = (ppm*spnumb + 80*np.ones((ppm.shape[0],4))*0.25)/(spnumb + 80)
         ic = - smppm * np.log(smppm)
-        smlines.append('>%04d_%d_%.4f_%.4f\n' %(i,spnumb, act.max(), conact))
+        smlines.append('>%04d_%04d_%d_%.4f_%.4f\n' %(i,j,spnumb, act.max(), conact))
         if np.sum((2-ic.sum(axis=1))>1)<3:
             for k in range(ppm.shape[0]):
                 smlines.append('\t'.join(list(np.array(np.array(smppm[k,:]*1000,dtype=int),dtype=str))) + '\n')
@@ -111,8 +108,8 @@ for i in range(psize):
         for p in range(0,len(lst),2): 
             if lst[p+1]-lst[p]+1 <= 8:
                 continue
-            lines1.append('>%04d_%d_%.4f_%.4f_%03d_%03d\n' %(i,spnumb, act.max(), conact,lst[p], lst[p+1]))
-            lines2.append('>%04d_%d_%.4f_%.4f_%03d_%03d\n' %(i,spnumb, act.max(), conact,lst[p], lst[p+1]))
+            lines1.append('>%04d_%04d_%d_%.4f_%.4f_%03d_%03d\n' %(i,j,spnumb, act.max(), conact,lst[p], lst[p+1]))
+            lines2.append('>%04d_%04d_%d_%.4f_%.4f_%03d_%03d\n' %(i,j,spnumb, act.max(), conact,lst[p], lst[p+1]))
             for k in range(lst[p],lst[p+1]+1):
                 lines1.append('\t'.join(list(np.array(np.array(ppm[k,:]*1000,dtype=int),dtype=str))) + '\n')
                 lines2.append('\t'.join(list(np.array(np.array(smppm[k,:]*1000,dtype=int),dtype=str))) + '\n')

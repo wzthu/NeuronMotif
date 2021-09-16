@@ -1,0 +1,6 @@
+nm/*/*/layer*
+nm-2/*/*/layer*
+*/*/*/nohup*
+nm*/*/*/motifDB.txt
+nm*/*/*/weight.hdf5
+nm*/*/*/__pycache__

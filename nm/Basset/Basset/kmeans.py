@@ -127,7 +127,7 @@ def resample_top(ponehots, pvalues):
     splist = []
     spvlist = []
     for i in range(4):
-        for j in range(ponehots.shape[2]):
+        for j in range(ponehots.shape[1]):
             newseq = resampleseqs.copy()
             newseq[:,j,:] = 0
             newseq[:,j,i] = 1

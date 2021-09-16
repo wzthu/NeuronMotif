@@ -3,7 +3,7 @@ DeepSEA data
 Download the data for training the DCNN:
 
 ```
-wget  --no-check-certificate   https://bioinfo.au.tsinghua.edu.cn/member/zwei/NeuronMotif/DCNN_train/DeepSEA_data.tar.gz
+wget  --no-check-certificate  http://bioinfo-xwwang-thu.cn/zwei/NeuronMotif/DCNN_train/DeepSEA_data.tar.gz
 
 ```
 

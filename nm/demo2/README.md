@@ -30,4 +30,7 @@ Architecture of DCNN model:
 
 # Result
 
+For the result in each folder, the sequence samples, position probability matrixes and diagnosis indicators are stored in folder 'layerX'. 
+The corresponding visualization results (HTML files) and the patterns matched to the JASPAR database by using Tomtom are shown in 'layerX_visualization'
+
 The results of layers 1-5 will be shown. The decoupling algorithm in NeuronMotif is applied once to the DCNN model.

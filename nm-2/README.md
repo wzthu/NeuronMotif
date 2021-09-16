@@ -2,7 +2,7 @@
 
 ## code
 
-The code and instructions to run decoupling alogrithm twice in NeuronMotif.
+The code and instructions to run decoupling alogrithm twice in NeuronMotif for users' own models.
 
 ## DeepSEA
 

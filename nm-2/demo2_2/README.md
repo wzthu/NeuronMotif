@@ -30,6 +30,9 @@ Architecture of DCNN model:
 
 # Result
 
+For the result in each folder, the sequence samples, position probability matrixes and diagnosis indicators are stored in folder 'layerX'. 
+The corresponding visualization results (HTML files) and the patterns matched to the JASPAR database by using Tomtom are shown in 'layerX_visualization'
+
 Only the receptive field of a convolutional neuron in layer 5 (82 bp) is long enough to put two 16-bp shifting CTCF motifs (19 bp). The decoupling algorithm in NeuronMotif is applied twice to the convolutional neuron in layer 5 of the DCNN model. The sample sequences depend on the result of Demo 2. 
 
 Only the results of layer 5 will be shown. This process can be applied to other layers but is not necessary. 

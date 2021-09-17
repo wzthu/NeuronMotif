@@ -8,7 +8,7 @@ For a convolutional neuron, if there are more than one shifting motif in the res
 
 Copy the model setting (modeldef.py) that you defined in [code](https://github.com/wzthu/NeuronMotif/tree/master/nm/code) to this folder
 
-````
+```
 cp ../../../nm/DeepSEA/DeepSEA/modeldef.py ./
 cp ../../../nm/DeepSEA/DeepSEA/weight.hdf5 ./
 ```

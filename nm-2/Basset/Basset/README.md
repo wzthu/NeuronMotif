@@ -8,7 +8,7 @@ For a convolutional neuron, if there are more than one shifting motif in the res
 
 Copy the model setting (modeldef.py) that you defined in [code](https://github.com/wzthu/NeuronMotif/tree/master/nm/code) to this folder
 
-````
+```
 cp ../../../nm/Basset/Basset/modeldef.py ./
 cp ../../../nm/Basset/Basset/weight.hdf5 ./
 ```
@@ -25,9 +25,9 @@ bash runlink.sh ../../../../nm/Basset/Basset/layer3 layer3 200
 
 The parameter of runlink.sh:
 
-1st, NeuronMotif result ppm directory xxx/xxx/xxx/layer?
-2nd, layer?
-3st, the number of the kernel
+* 1st, NeuronMotif result ppm directory xxx/xxx/xxx/layer?
+* 2nd, layer?
+* 3st, the number of the kernel
 
 ##  Download motif database
 
@@ -67,10 +67,12 @@ bash run.layer.sh 3 200 5
 ##  Visualization
 
 The parameter of run.layer.tt.sh:
-1st, layer number, start from 1
-2nd, kernels number in this layer
-3rd, the max threads number to be used.
-4th, is the model train by DeepSEA dataset, yes: 1, no: 0
+
+* 1st, layer number, start from 1
+* 2nd, kernels number in this layer
+* 3rd, the max threads number to be used.
+* 4th, is the model train by DeepSEA dataset, yes: 1, no: 0
+
 It depends on total CPU cores in this computer and is limited by memory size.
 Be carefule to set large threads. The memory is easy to be stuffed.
 

@@ -148,7 +148,7 @@ for i in range(len(clist)):
     f['pfma' + str(i)] = allseqs[clist[i],:,:].sum(axis=0)
     pvalues = allvs[clist[i]]
     ponehots = allseqs[clist[i],:,:]
-    ponehots, pvalues = resample_top(ponehots, pvalues)
+#    ponehots, pvalues = resample_top(ponehots, pvalues)
     maxpvalues = np.max(pvalues)
     pfmlist = []
     vlist = []
@@ -198,7 +198,7 @@ for s in range(len(subclist)):
         f['pfma' +str(s) +'_' + str(i)] = allseqs[clist[i],:,:].sum(axis=0)
         pvalues = allvs[clist[i]]
         ponehots = allseqs[clist[i],:,:]
-        ponehots, pvalues = resample_top(ponehots, pvalues)
+#        ponehots, pvalues = resample_top(ponehots, pvalues)
         maxpvalues = np.max(pvalues)
         pfmlist = []
         vlist = []

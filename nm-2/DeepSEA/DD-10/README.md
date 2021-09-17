@@ -82,5 +82,5 @@ For example:
 
 ***Note: only the last layer is done, the next layer can be started.***
 ```
-bash vis.layer.sh 10 1280 28 0
+bash vis.layer.sh 10 1280 28 1
 ```

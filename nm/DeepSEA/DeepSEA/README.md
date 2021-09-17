@@ -31,7 +31,7 @@ bash script.sh
 
 ## Through scripts in many nodes of a cluster
 
-## Run NeuronMotif:
+### Run NeuronMotif:
 
 ```
 # For one line of the script, the line can be submitted to several nodes at the same time for paralleling.
@@ -50,7 +50,7 @@ python tochenDeepSEA.py 2
 python tochenDeepSEA.py 3
 ```
 
-## Visulization
+### Visulization
 
 Download JASPAR database:
 

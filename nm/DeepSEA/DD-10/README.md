@@ -21,7 +21,7 @@ Alternatively, if the link above is not available temperately, you can download 
 
 Before running the scripts, you should adapt the number of threads in the scripts to your server or cluster.
 
-## Through script in a server:
+## Through the script in a server:
 
 
 ```
@@ -30,7 +30,7 @@ bash script.sh
 
 ## Through scripts in many nodes of a cluster
 
-## Run NeuronMotif:
+### Run NeuronMotif:
 
 ```
 # For one line of the script, the line can be submitted to several nodes at the same time for paralleling. 
@@ -62,7 +62,7 @@ python tochenDeepSEA.py 9
 python tochenDeepSEA.py 10
 ```
 
-## Visulization
+### Visulization
 
 Download JASPAR database:
 

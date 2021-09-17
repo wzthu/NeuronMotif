@@ -30,7 +30,7 @@ bash script.sh
 
 ## Through scripts in many nodes of a cluster
 
-## Run NeuronMotif:
+### Run NeuronMotif:
 
 ```
 
@@ -51,7 +51,7 @@ python tochen.py 4
 python tochen.py 5
 ```
 
-## Visulization
+### Visulization
 
 Download JASPAR database:
 

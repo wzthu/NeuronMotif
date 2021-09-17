@@ -52,6 +52,9 @@ Our server contains 28 cores server 128GB memory.
 
 
 ```
+# For one line of the script, the line can be submitted to several nodes at the same time for paralleling.
+# Next line can not be submitted until the tasks in all nodes are done.
+
 bash run.layer.sh 1 128 20
 bash run.layer.sh 2 128 20
 bash run.layer.sh 3 160 20
@@ -69,6 +72,8 @@ bash run.layer.sh 10 512 20
 The parameter is the layer number:
 
 ```
+# These scripts do not spend a long time, paralleling in not necessary.
+
 python tochen.py 1
 python tochen.py 2
 python tochen.py 3
@@ -84,6 +89,8 @@ python tochen.py 10
 For model generated from  DeepSEA data please run the following scripts instead.
 
 ```
+# These scripts do not spend a long time, paralleling in not necessary.
+
 python tochenDeepSEA.py 1
 python tochenDeepSEA.py 2
 python tochenDeepSEA.py 3
@@ -118,6 +125,8 @@ For example:
 Our server contains  28 cores server 128GB memory
 
 ```
+# These scripts can be submitted to different nodes at the same time. Order is not required.
+
 bash vis.layer.sh 1 28
 bash vis.layer.sh 2 28
 bash vis.layer.sh 3 28

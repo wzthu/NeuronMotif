@@ -24,3 +24,21 @@ for i in range(int(pfms.shape[0])):
 
 with open('layer' + str(layer)+'/ppm.chen' , 'w') as f:
     f.writelines(lines)
+
+
+import os
+
+os.mkdir('layer' + str(layer)+'/vis')
+
+for i in range(int(pfms.shape[0])):
+    lines=[]
+    pfm = pfms[i,:,]
+    if (pfm  != 0.25).sum()==0:
+        continue
+    lines.append('>%04d_%d_%.4f_%.4f\n' %(i,spnumb[i], act[i], conact[i]))
+    for j in range(pfm.shape[0]):
+        lines.append('\t'.join(list(np.array(np.array(pfm[j,[0,1,2,3]]*1000,dtype=int),dtype=str))) + '\n')
+    lines.append('\n')
+    with open('layer' + str(layer)+'/vis/'+str(i)+'.chen' , 'w') as f:
+        f.writelines(lines)
+

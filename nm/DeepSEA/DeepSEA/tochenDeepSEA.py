@@ -37,7 +37,8 @@ for i in range(int(pfms.shape[0])):
         continue
     lines.append('>%04d_%d_%.4f_%.4f\n' %(i,spnumb[i], act[i], conact[i]))
     for j in range(pfm.shape[0]):
-        lines.append('\t'.join(list(np.array(np.array(pfm[j,[0,2,1,3]]*1000,dtype=int),dtype=str))) + '\n')
+        lines.append('\t'.join(list(np.array(np.array(pfm[j,[0,1,2,3]]*1000,dtype=int),dtype=str))) + '\n')
     lines.append('\n')
     with open('layer' + str(layer)+'/vis/'+str(i)+'.chen' , 'w') as f:
         f.writelines(lines)
+

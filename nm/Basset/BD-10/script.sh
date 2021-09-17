@@ -10,8 +10,8 @@ bash run.layer.sh 5 256 20
 bash run.layer.sh 6 256 20
 bash run.layer.sh 7 384 20
 bash run.layer.sh 8 384 20
-bash run.layer.sh 9 512 20
-bash run.layer.sh 10 512 20
+bash run.layer.sh 9 512 5
+bash run.layer.sh 10 512 5
 
 python tochen.py 1
 python tochen.py 2

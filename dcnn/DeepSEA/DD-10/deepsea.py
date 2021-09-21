@@ -23,7 +23,6 @@ from keras.optimizers import SGD
 
 from keras.activations import relu
 
-from atac2d.train.genome_layers import RevCompConv1D, FlipConv2D, DenseAfterRevcompConv1D, DenseAfterFlipConv2D,RevCompConv1DBatchNorm
 
 
 input_bp = 1000

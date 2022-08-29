@@ -17,6 +17,14 @@ wget  --no-check-certificate -O weight.hdf5  http://bioinfo-xwwang-thu.cn/zwei/N
 
 Alternatively, if the link above is not available temperately, you can download from https://cloud.tsinghua.edu.cn/d/fee522536d524eae9531/files/?p=%2FDCNN_weight%2FDeepSEA%2FDD-10%2Fweight.hdf5&dl=1
 
+
+# Download JASPAR database:
+
+```
+wget -O  motifDB.txt  http://jaspar.genereg.net/download/CORE/JASPAR2020_CORE_vertebrates_redundant_pfms_meme.txt
+```
+
+
 # Run
 
 Before running the scripts, you should adapt the number of threads in the scripts to your server or cluster.
@@ -44,46 +52,9 @@ bash run.layer.sh 5 256 20
 bash run.layer.sh 6 320 20
 bash run.layer.sh 7 512 20
 bash run.layer.sh 8 640 20
-bash run.layer.sh 9 1024 20
-bash run.layer.sh 10 1280 20
+bash run.layer.sh 9 1024 10
+bash run.layer.sh 10 1280 10
 ```
 
-```
-# These scripts do not spend a long time, paralleling in not necessary.
-python tochenDeepSEA.py 1
-python tochenDeepSEA.py 2
-python tochenDeepSEA.py 3
-python tochenDeepSEA.py 4
-python tochenDeepSEA.py 5
-python tochenDeepSEA.py 6
-python tochenDeepSEA.py 7
-python tochenDeepSEA.py 8
-python tochenDeepSEA.py 9
-python tochenDeepSEA.py 10
-```
-
-### Visulization
-
-Download JASPAR database:
-
-```
-wget -O  motifDB.txt  http://jaspar.genereg.net/download/CORE/JASPAR2020_CORE_vertebrates_redundant_pfms_meme.txt
-```
-
-Match the discovered motif to JASPAR database:
-
-```
-# These scripts can be submitted to different nodes at the same time. Order is not required. 
-bash vis.layer.sh 1 28
-bash vis.layer.sh 2 28
-bash vis.layer.sh 3 28
-bash vis.layer.sh 4 28
-bash vis.layer.sh 5 28
-bash vis.layer.sh 6 28
-bash vis.layer.sh 7 28
-bash vis.layer.sh 8 28
-bash vis.layer.sh 9 28
-bash vis.layer.sh 10 28
-```
 
 

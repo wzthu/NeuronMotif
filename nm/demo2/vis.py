@@ -1,4 +1,6 @@
 import h5py
+import numpy as np
+np.random.seed(2)
 import matplotlib
 matplotlib.use('Agg')
 from matplotlib import pyplot as plt
@@ -136,8 +138,12 @@ for i in range(layer-2):
     lastpool *=pool_sz[i]
 
 wmtx = act_submodel.layers[-1].get_weights()[0][:,:,kernel]
-actsmx = acts.reshape((int(acts.shape[0]/lastpool),lastpool))
-actsmx = actsmx.sum(axis=1)
+print(wmtx.shape)
+print(acts.shape)
+actsmx = acts.reshape((int(acts.shape[0]/wmtx.shape[1]),wmtx.shape[1]))
+print(actsmx.shape)
+actsmx = actsmx.sum(axis=0)
+print(actsmx.shape)
 if rev:
     actsmx = np.r_[actsmx,actsmx[::-1]]
 
@@ -186,11 +192,14 @@ rgstep = 1
 for i in range(layer-1):
     rgstep *= pool_sz[i]
 
-prgstep = 1
+prgstep0 = 1
 for i in range(layer-2):
-    prgstep *= pool_sz[i]
+    prgstep0 *= pool_sz[i]
 
-
+if layer == 1:
+    prgstep = 1
+else:
+    prgstep = int(ppms.shape[0]/kernel_nb[layer-2])
 
 for i in range(seq0.shape[0]):
     if layer == 1:
@@ -205,7 +214,7 @@ for i in range(seq0.shape[0]):
 #        selpfmid = np.random.choice(np.arange(st,ed,1)[ismotif[st:ed]],ismotif[st:ed].sum(),replace=False)
         selpfmid = np.random.choice(np.arange(st,ed,1),prgstep,replace=False)
         for k in range(selpfmid.shape[0]):#same motifs at the same position
-            seqst = int(spidx[0][selidx[i,j]] * rgstep + prgstep*np.random.choice(poolsz,1))
+            seqst = int(spidx[0][selidx[i,j]] * rgstep + prgstep0*np.random.choice(poolsz,1))
             seqed = int(seqst + input_bps[layer-2])
             mtfst = int(seqst + motifpos[selpfmid[k],0])
             mtfed = int(seqst + motifpos[selpfmid[k],1])
@@ -217,6 +226,11 @@ for i in range(seq0.shape[0]):
 #                spseqidx = [np.random.choice(4,1,p=sppfm[t,:]) for t in range(sppfm.shape[0])]
                 spseqidx = spppm.argmax(axis=1)
                 for p in range(spppm.shape[0]):
+#                    print(ifput.shape)
+#                    print(spppm.shape)
+#                    print(seqst)
+                    if seqst +p >= ifput.shape[0]:
+                        break
                     if ifput[seqst +p] > 0:
                         pass
                     else:

@@ -1,4 +1,6 @@
 import h5py
+import numpy as np
+np.random.seed(0)
 import matplotlib
 matplotlib.use('Agg')
 from matplotlib import pyplot as plt
@@ -6,8 +8,12 @@ import sys
 import h5py
 layer = int(sys.argv[1])
 kernel = int(sys.argv[2])
+motif_nb = 1
+if len(sys.argv) > 3:
+    motif_nb = int(sys.argv[3])
 print('layer' + str(layer))
 print('kernel' + str(kernel))
+print('motif_nb'+ str(motif_nb))
 #layer = 2
 #kernel = 0
 
@@ -62,6 +68,12 @@ kernel_nb,kernel_sz,pool_sz,input_bp, input_bps, model_list, act_model_list, gd 
 
 submodel = model_list[-1]
 
+new_pool_sz = [1] * len(pool_sz)
+
+for i in range(motif_nb):
+    new_pool_sz = [ new_pool_sz[j] * pool_sz[j] for j in range(len(pool_sz))]
+
+pool_sz = new_pool_sz
 
 import tensorflow as tf
 from keras import backend  as K
@@ -151,7 +163,7 @@ for i in range(len(clist)):
     f['pfma' + str(i)] = allseqs[clist[i],:,:].sum(axis=0)
     pvalues = allvs[clist[i]]
     ponehots = allseqs[clist[i],:,:]
-    ponehots, pvalues = resample_top(ponehots, pvalues)
+#    ponehots, pvalues = resample_top(ponehots, pvalues)
     maxpvalues = np.max(pvalues)
     pfmlist = []
     vlist = []

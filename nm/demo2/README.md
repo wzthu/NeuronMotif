@@ -28,9 +28,25 @@ Architecture of DCNN model:
     + Activation function (sigmoid)
 * Flatten
 
+
+# Run this demo
+
+Download motif database
+
+Take JASPAR as an example:
+
+```
+wget -O  motifDB.txt  http://jaspar.genereg.net/download/CORE/JASPAR2020_CORE_vertebrates_redundant_pfms_meme.txt
+```
+
+Then, run
+
+```
+bash script.sh
+```
+
+
 # Result
 
 For the result in each folder, the sequence samples, position probability matrixes and diagnosis indicators are stored in folder 'layerX'. 
-The corresponding visualization results (HTML files) and the patterns matched to the JASPAR database by using Tomtom are shown in 'layerX_visualization'
 
-The results of layers 1-5 will be shown. The decoupling algorithm in NeuronMotif is applied once to the DCNN model.

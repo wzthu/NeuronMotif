@@ -2,24 +2,40 @@ import h5py
 import numpy as np
 import os
 import sys
-from modeldef import *
 os.environ["HDF5_USE_FILE_LOCKING"] = "FALSE"
-layer =int(sys.argv[1])
-f = h5py.File('layer'+str(layer)+'/allppm.h5'  ,'r')
-#f = h5py.File('allppm.h5','r')
-folder= 'layer'+str(layer)
-allppm = f['allppm'][:]
-act = f['act'][:]
-conact = f['conact'][:]
-spnumb = f['spnumb'][:]
-ppm = allppm[0,:,:]
+f = h5py.File(sys.argv[1],'r')
 
-kernel_nb,kernel_sz,pool_sz,input_bp, input_bps, model_list, act_model_list, gd = get_model_list(layer = layer, kernel = 0, weight_file='weight.hdf5')
-#decouple = int(3)
-decouple = 1
-for i in range(layer-1):
-    decouple *= pool_sz[i]
+ppm = f['ppm0'][:]
 
+html_txt0 = '''
+<html lang="en">
+    <body>
+        <h2>Nucleotides</h2>
+        <canvas id="logo_nt"></canvas>
+
+        <h2>Amino acids</h2>
+        <canvas id="logo_aa"></canvas>
+
+        <script src="js/jseqlogo.js"></script>
+        <script>
+            var options = {
+                "colors": jseqlogo.colors.nucleotides
+            };
+
+            var data = {
+                "A": [0.5, 1.0, 0.0, 0.1, 0.0, 0.0, 0.0],
+                "C": [0.8, 0.05, 0.2, 0.0, 0.5, 0.05, 0.0],
+                "G": [0.01, 0.0, 0.0, 0.7, 0.0, 0.3, 0.84],
+                "T": [0.2, 0.0, 0.45, 0.0, 0.3, 0.0, 0.2]
+            };
+
+            sequence_logo(document.getElementById("logo_nt"), 600, 200, data, options);
+
+
+        </script>
+    </body>
+</html>
+'''
 
 html_txt = '''
 <html lang="en">
@@ -38,15 +54,15 @@ border:1px solid black;
 }
 
 </style>
-    %s
-    <br/>
-    Visit NeuronMotif website for full results: 
-    <a href="https://wzthu.github.io/NeuronMotif/">https://wzthu.github.io/NeuronMotif/</a>
-    <br/>
-    Please wait patiently for all motif logos or patterns in the column of CN motifs to load ...
     <body>
+ %s
+<br/>
+Visit NeuronMotif website for full results: <a href="https://wzthu.github.io/NeuronMotif/">https://wzthu.github.io/NeuronMotif/ </a>
+<br/>
+Please be patient to load all motif logos or patterns in the column of CN motifs ...
+<br/>
         %s
-        <script src="https://wzthu.github.io/NeuronMotif/jseqlogo.js"></script>
+        <script src="js/jseqlogo.js"></script>
         <script>
             var options = {
                 "colors": jseqlogo.colors.nucleotides
@@ -75,48 +91,33 @@ def ppm2js(ppm, ppm_id, width, height):
     html += 'sequence_logo(document.getElementById("%s"), %d,%d, data, options);' % (ppm_id,width,height)
     return html
 
-
-filelist = []
-
-countpre = 0
-count = 0
-for i in range(allppm.shape[0]):
-    count += 1
-    if (count > 1000 and (count % decouple)==0) or i == allppm.shape[0]-1:
-        filelist.append(folder + '/vis/result/index_' + str(countpre) + '_' + str(i) + '.html'  )
-        countpre = i+1
-        count = 0
-        print(filelist[-1])
-
 ppm_ids = []
 ppm_jss = []
-width=ppm.shape[0]*16
+width=ppm.shape[0]*8
 height = 50
 
-countpre = 0
-count = 0
+i_max = 0
+for k in list(f.keys()):
+    if k.startswith('act'):
+        if int(k[3:])>i_max:
+            i_max= int(k[3:])
 
-for i in range(allppm.shape[0]):
-    if True:
-        ppm_id = '%04d_%04d_%.4f_%.4f_%d' % (i/decouple,i%decouple,act[i], conact[i],spnumb[i])
-        ppm_js = ppm2js(allppm[i,:,:], ppm_id, width, height)
+
+for i in range(i_max):
+        if 'act%d' % (i) not in list(f.keys()):
+            continue
+        ppm_id = '%8d_%.3f_%.3f_%d' % (i,f['act%d' % (i)][:].max(), f['conact%d' % (i)][0],f['act%d' % (i)].shape[0])
+        ppm = f['ppm%d' % (i)][:]
+        ppm_js = ppm2js(ppm, ppm_id, width, height)
         ppm_jss.append(ppm_js)
-        ppm_ids.append('<tr><td>%04d</td><td>%04d</td><td>%.4f</td><td>%.4f</td><td>%d</td><td><a href="%d.chen/%d.chen.out/tomtom.html">TomtomLink</a></td><td><canvas id="%s"></canvas></td></tr>' % (i/decouple,i%decouple,act[i], conact[i],spnumb[i], i,i, ppm_id))
-        count += 1
-    if (count > 1000 and (count % decouple)==0) or i == allppm.shape[0]-1:
-        html_txt1 = html_txt % ('Page '+ ' '.join(['<a href="'+filelist[i]+'">'+str(i)+'</a>' for i in range(len(filelist))]),
-'<table class="mt"><tr><td>Neuron</td><td>Decouple</td><td>MaxAct(I2)</td><td>ConsensusAct(I1)</td><td>SampleSize</td><td align=center>TomtomResult</td><td align=center>CN motifs ('+str(ppm.shape[0])+' bp)</td></tr>'+'\n'.join(ppm_ids)+'</table>', '\n'.join(ppm_jss))
-        print('+++++++++')
-        with open( folder + '/vis/result/index_' + str(countpre) + '_' + str(i) + '.html'  ,'w') as ftest:
-            ftest.write(html_txt1)
-        if countpre == 0:
-            with open(folder + '/vis/result/index.html'  ,'w') as ftest:
-                ftest.write(html_txt1)
-        countpre = i+1
-        count = 0
-        ppm_ids = []
-        ppm_jss = []
-        print('===========')
+        ppm_ids.append('<tr><td>%s</td><td><a href="tomtom_%s.sel.ppm.meme/tomtom.html">TomtomLink</a></td><td><canvas id="%s"></canvas></td></tr>' % (ppm_id,sys.argv[2], ppm_id))
     
     
+html_txt1 = html_txt % ('Neuron '+ ' '.join(['<a href="'+str(i)+'.html">'+str(i)+'</a>' for i in range(int(sys.argv[4]))]),'<table class="mt"><tr><td>Dcp1_Dcp2_ActMax_ConsensusAct_SampleSize</td><td align=center>TomtomResult</td><td align=center>CN motifs ('+str(ppm.shape[0])+' bp)</td></tr>'+'\n'.join(ppm_ids)+'</table>', '\n'.join(ppm_jss))
+
+with open(sys.argv[3]+'.html','w') as ftest:
+    ftest.write(html_txt1)
+ 
+  
+
 

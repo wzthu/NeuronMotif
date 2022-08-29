@@ -6,6 +6,9 @@ import sys
 import h5py
 layer = int(sys.argv[1])
 #kernel = int(sys.argv[2])
+motif_nb = 1
+if len(sys.argv) > 2:
+    motif_nb = int(sys.argv[2])
 print('layer' + str(layer))
 #print('kernel' + str(kernel))
 #layer = 2
@@ -55,7 +58,19 @@ total = 1
 for i in range(layer-1):
     total *= pool_sz[i]
 
+for i in range(motif_nb-1):
+    total *= total
+
 for kernel in range(kernel_nb[layer-1]):
+    print(kernel)
+    if not  os.path.exists('layer'+str(layer)+'/kernel-'+str(kernel)+'.ppm.h5'):
+        for j in range(total):
+                ppmlist.append(np.ones((1,input_bp,4))*0.25)
+                smppmlist.append(np.ones((1,input_bp,4))*0.25)
+                countlist.append(0)
+                actlist.append(0)
+                conactlist.append(np.array([0]))
+        continue
     with h5py.File('layer'+str(layer)+'/kernel-'+str(kernel)+'.ppm.h5','r') as f:
         for j in range(total):
             if 'ppm' + str(j) in f.keys():

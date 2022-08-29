@@ -123,10 +123,16 @@ make install
 
 The erros of other tools can be ignored.
 
-Add it to PATH environment variable or execute:
+Add it to PATH environment variable by appending following command line to  ~/.bashrc:
 
 ```
 export PATH=$HOME/meme/bin:$HOME/meme/libexec/meme-5.1.0:$PATH
+```
+
+and execute:
+
+```
+source  ~/.bashrc
 ```
 
 Test following commands:

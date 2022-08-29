@@ -1,3 +1,5 @@
+import numpy as np
+np.random.seed(2)
 import h5py
 import matplotlib
 matplotlib.use('Agg')

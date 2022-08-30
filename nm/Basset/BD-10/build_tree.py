@@ -679,7 +679,7 @@ for mcb_name in mcbs.keys():
         node_start_layers += '<a href="../layer%d/%d.html">%d</a> &nbsp' %(int(layer),int(kernel),int(kernel))
         html_link_nodes.append(html_link_table_temple % (node_motif,node_start_layers))
 
-bedlink = 'http://bioinfo-xwwang-thu.cn/zwei/NeuronMotif/DD-10/layer%d/%d.bed' %(int(layer),int(kernel))
+bedlink = 'http://bioinfo-xwwang-thu.cn/zwei/NeuronMotif/BD-10/layer%d/%d.bed' %(int(layer),int(kernel))
 ucsc_link = ''                
 if bedlink is not None:
     ucsc_link = '<a href="http://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&hgt.customText=%s">Click here to see the sequences following this syntax in UCSC Genome Browser.</a>' %(bedlink)

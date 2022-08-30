@@ -103,7 +103,7 @@ for k in list(f.keys()):
             i_max= int(k[3:])
 
 
-for i in range(i_max):
+for i in range(i_max+1):
         if 'act%d' % (i) not in list(f.keys()):
             continue
         ppm_id = '%8d_%.3f_%.3f_%d' % (i,f['act%d' % (i)][:].max(), f['conact%d' % (i)][0],f['act%d' % (i)].shape[0])

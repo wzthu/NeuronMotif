@@ -16,7 +16,7 @@ html_txt0 = '''
         <h2>Amino acids</h2>
         <canvas id="logo_aa"></canvas>
 
-        <script src="js/jseqlogo.js"></script>
+        <script src="https://wzthu.github.io/NeuronMotif/jseqlogo.js"></script>
         <script>
             var options = {
                 "colors": jseqlogo.colors.nucleotides
@@ -62,7 +62,7 @@ Visit NeuronMotif website for full results: <a href="https://wzthu.github.io/Neu
 Please be patient to load all motif logos or patterns in the column of CN motifs ...
 <br/>
         %s
-        <script src="js/jseqlogo.js"></script>
+        <script src="https://wzthu.github.io/NeuronMotif/jseqlogo.js"></script>
         <script>
             var options = {
                 "colors": jseqlogo.colors.nucleotides

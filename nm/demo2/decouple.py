@@ -2,6 +2,7 @@ import numpy as np
 import h5py
 import sys
 import os
+os.environ["CUDA_VISIBLE_DEVICES"]="-1" 
 threads = sys.argv[1]
 layer = sys.argv[2]
 kernel_size = int(sys.argv[3])

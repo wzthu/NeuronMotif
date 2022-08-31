@@ -59,7 +59,7 @@ border:1px solid black;
 <br/>
 Visit NeuronMotif website for more information: <a href="https://wzthu.github.io/NeuronMotif/">https://wzthu.github.io/NeuronMotif/ </a>
 <br/>
-Please be patient to load all motif logos or patterns in the column of CN motifs ...
+Please be patient to load all motif logos or patterns in the column of CN CRMs ...
 <br/>
         %s
         <script src="https://wzthu.github.io/NeuronMotif/jseqlogo.js"></script>
@@ -113,7 +113,7 @@ for i in range(i_max+1):
         ppm_ids.append('<tr><td>%s</td><td><a href="tomtom_%s.sel.ppm.meme/tomtom.html">TomtomLink</a></td><td><canvas id="%s"></canvas></td></tr>' % (ppm_id,sys.argv[2], ppm_id))
     
     
-html_txt1 = html_txt % ('Neuron '+ ' '.join(['<a href="'+str(i)+'.html">'+str(i)+'</a>' for i in range(int(sys.argv[4]))]) + ('<br/><a href="tree.%s.html">Click here to see syntax tree</a>' % (sys.argv[3])),'<table class="mt"><tr><td>Dcp1_Dcp2_ActMax_ConsensusAct_SampleSize</td><td align=center>TomtomResult</td><td align=center>CN motifs ('+str(ppm.shape[0])+' bp)</td></tr>'+'\n'.join(ppm_ids)+'</table>', '\n'.join(ppm_jss))
+html_txt1 = html_txt % ('Neuron '+ ' '.join(['<a href="'+str(i)+'.html">'+str(i)+'</a>' for i in range(int(sys.argv[4]))]) + ('<br/><a href="tree.%s.html">Click here to see syntax tree (if exist)</a>' % (sys.argv[3])),'<table class="mt"><tr><td>Dcp1_Dcp2_ActMax_ConsensusAct_SampleSize</td><td align=center>TomtomResult</td><td align=center>CN CRMs ('+str(ppm.shape[0])+' bp)</td></tr>'+'\n'.join(ppm_ids)+'</table>', '\n'.join(ppm_jss))
 
 with open(sys.argv[3]+'.html','w') as ftest:
     ftest.write(html_txt1)

@@ -327,7 +327,7 @@ border:1px solid grey;
         <a href='tomtom_dict_%d/tomtom.html'>Dictionary for neuron %d in layer %d</a><br/>
         <a href='%d.html'>PWMs represented by this neuron</a><br/>
         %s<br/>
-        Please wait patiently for all motif logos or patterns of CN motifs to load ...
+        Please wait patiently for all motif logos or patterns of CN CRMs to load ...
         %s
     </body>
     Visit NeuronMotif website for full results:

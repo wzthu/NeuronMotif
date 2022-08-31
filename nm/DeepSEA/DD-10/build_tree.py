@@ -327,7 +327,7 @@ border:1px solid grey;
         <a href='tomtom_dict_%d/tomtom.html'>Dictionary for neuron %d in layer %d</a><br/>
         <a href='%d.html'>PWMs represented by this neuron</a><br/>
         %s<br/>
-        Please wait patiently for all motif logos or patterns of CN motifs to load ...
+        Please wait patiently for all motif logos or patterns of CN CRMs to load ...
         %s
     </body>
     Visit NeuronMotif website for full results:
@@ -679,7 +679,8 @@ for mcb_name in mcbs.keys():
         node_start_layers += '<a href="../layer%d/%d.html">%d</a> &nbsp' %(int(layer),int(kernel),int(kernel))
         html_link_nodes.append(html_link_table_temple % (node_motif,node_start_layers))
 
-bedlink = 'http://bioinfo-xwwang-thu.cn/zwei/NeuronMotif/DD-10/layer%d/%d.bed' %(int(layer),int(kernel))
+#bedlink = 'http://bioinfo-xwwang-thu.cn/zwei/NeuronMotif/DD-10/layer%d/%d.bed' %(int(layer),int(kernel))
+bedlink = None
 ucsc_link = ''                
 if bedlink is not None:
     ucsc_link = '<a href="http://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&hgt.customText=%s">Click here to see the sequences following this syntax in UCSC Genome Browser.</a>' %(bedlink)
@@ -740,7 +741,7 @@ long_motif_idx = {}
 for k in list(f.keys()):
     if k.startswith('ppm'):
         long_motif_ppm[k[len('ppm'):]] = f[k][:]
-        long_motif_ppm[k[len('ppm'):]] = long_motif_ppm[k[len('ppm'):]][:,[0,2,1,3]]
+#        long_motif_ppm[k[len('ppm'):]] = long_motif_ppm[k[len('ppm'):]][:,[0,2,1,3]]
         long_motif_act[k[len('ppm'):]] = f['conact' + k[len('ppm'):]][:].max()
         long_motif_idx[k[len('ppm'):]] = f['index' + k[len('ppm'):]][:]
 

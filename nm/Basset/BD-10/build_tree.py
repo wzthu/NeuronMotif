@@ -583,7 +583,7 @@ for mcb_name in mcbs.keys():
                     oclayer += str(layer)
             else:
                 oclayer = ''               
-            html_row += '<td align=center colspan="%d">%s</td>'%(span,left_space+nodes[mcb_name]['_'.join(node_idx)]+'<br/>'+left_space+'combination occurs in <br/>'+ left_space+ ' layer '+oclayer+'<br/>'+left_space+'<img src="split.png" height="30px" width="%dpx">' % (int(total_len*6)))
+            html_row += '<td align=center colspan="%d">%s</td>'%(span,left_space+nodes[mcb_name]['_'.join(node_idx)]+'<br/>'+left_space+'combination occurs in <br/>'+ left_space+ ' layer '+oclayer+'<br/>'+left_space+'<img src="https://wzthu.github.io/NeuronMotif/split.png" height="30px" width="%dpx">' % (int(total_len*6)))
             for subnode in node:
                 queue.append(subnode)
                 queue_depth.append(d+1)

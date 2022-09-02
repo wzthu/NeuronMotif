@@ -149,7 +149,7 @@ chen2meme  -h
 ## Clone this repository:
 
 ```
-git clone https://github.com/wzthu/NeuronMotif
+git clone https://github.com/wzthu/NeuronMotif.git
 ```
 
 

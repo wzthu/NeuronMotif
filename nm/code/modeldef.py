@@ -106,6 +106,7 @@ def get_model_list(layer, kernel, weight_file='weight.hdf5'):
 # Fill your own deep convolutional neural network structure and,
 # Before activation function, add  'model_list.append(Model(inputs = [seqInput], outputs = [seq]))'
 # After convolution function, add 'act_model_list.append(Model(inputs = [seqInput], outputs = [seq]))'
+# Note: the names of each tensors or layers should be removed!!!!!
     seq = Conv1D(128, 7)(seqInput)
     act_model_list.append(Model(inputs = [seqInput], outputs = [seq]))
     seq = BatchNormalization()(seq)

@@ -1,5 +1,11 @@
+# Introduction of NeuronMotif
 
-# NeuronMotif
+NeuronMotif is an algorithm for interpreting the patterns learned by deep convolutional neurons (DCN) in DCNN. For a DCNN based on DNA sequences, it can convert the substructure weight of a DCN into DNA sequence motifs. DNA can be considered a new language so the task of NeuronMotif is to uncover the motif and motif grammar embedded in DCNs.
+
+![](https://github.com/wzthu/NeuronMotif/blob/master/Goal.jpg)
+
+
+# NeuronMotif Software
 
 This repository implements the NeuronMotif algorithm in ["NeuronMotif: Deciphering cis-regulatory codes by layerwise de-mixing of deep neural networks"](https://www.biorxiv.org/content/10.1101/2021.02.10.430606v1) by Zheng Wei et al.
 
@@ -9,33 +15,35 @@ Feel free to contact Zheng Wei for any issues or difficulties:
 + Email: weiz(at)tsinghua.edu.cn
 + GitHub: https://github.com/wzthu/NeuronMotif/issues
 
-The code for training the deep convolutional neural network (DCNN) models that are used in this work are stored in [dcnn](https://github.com/wzthu/NeuronMotif/tree/master/dcnn). If you do not want to train DCNN models, you can ignore this folder.
+* Input of NeuronMotif:
+    + Architecture of CNN Model
+    + H5 weight file of CNN model
 
-The code implements the NeuronMotif algorithm for decoupling the mentioned DCNN **once** are stored in [nm](https://github.com/wzthu/NeuronMotif/tree/master/nm). It also includes interpreting and visualizing codes. NeuronMotif only needs a weight file of the DCNN. We provide the links to download the weight file of the DCNN models used in this paper. Users can feed their own DCNN models to NeuronMotif after they make some changes to the folder [code](https://github.com/wzthu/NeuronMotif/tree/master/nm/code) following the instructions in [nm](https://github.com/wzthu/NeuronMotif/tree/master/nm). The existing DCNN models in the paper are also examples to used NeuronMotif.
+* Ouput of NeuronMotif:
+    + HTML of CN cis-regulatory module (CRM) 
+    + HTML of syntax rule for each CN
+    + Position probability matrix of discovered motifs and CN CRMs
+    + The discovered motifs matched to JASPAR database
 
 
-In brief, there are two steps for a DCNN model. Take demo2 as an example.
+The contains in the directorise:
 
-1. Training model:[dcnn/demo/demo2](https://github.com/wzthu/NeuronMotif/tree/master/dcnn/demo/demo2)(optional if model is trained).
-2. Run NeuronMotif algorithm: [nm/demo/demo2](https://github.com/wzthu/NeuronMotif/tree/master/nm/demo2)
+| Directory             | Contains                                               |
+|-----------------------|--------------------------------------------------------|
+| NeuronMotif           |  NeuronMotif software                                    |
+| demos/demo1           | Simple NeuronMotif demo applied to 2-layer toy model   |
+| demos/demo2           | Simple NeuronMotif demo applied to 4-layer toy model   |
+| demos/DeepSEA/DeepSEA | NeuronMotif applied to DeepSEA model                   |
+| demos/DeepSEA/DD-10   | NeuronMotif applied to DD-10 model                     |
+| demos/Basset/Basset   | NeuronMotif applied to Basset model                    |
+| demos/Basset/BD-10    | NeuronMotif applied to BD-10 model                     |
+| dcnn                  | The code for training the CNN models used in this work |
 
 
+Result of DeepSEA/DD-10/Basset/BD-10 is available at [NeuronMotif website](https://wzthu.github.io/NeuronMotif/).
 
-The code of NeuronMotif does not depend on GPU. We have parallelized the code so that it can make full use of the computing resources in a computer cluster. Some scripts can be submitted to different nodes in a computer cluster at the same time. See the instructions in code folders. 
-
-If you are interested in a part of the work, you can read README file in the corresponding folder for the instruction of downloading the data and running the code.
 
 Before using this repository, users should install the dependent software following the instruction at the end of this file.
-
-# Introduction of NeuronMotif
-
-NeuronMotif is an algorithm for interpreting the patterns learned by deep convolutional neurons (DCN) in DCNN. For a DCNN based on DNA sequences, it can convert the substructure weight of a DCN into DNA sequence motifs. DNA can be considered a new language so the task of NeuronMotif is to uncover the motif and motif grammar embedded in DCNs.
-
-![](https://github.com/wzthu/NeuronMotif/blob/master/Goal.jpg)
-
-# Results of NeuronMotif
-
-Result is available at [NeuronMotif website](https://wzthu.github.io/NeuronMotif/).
 
 
 # Installation
@@ -160,3 +168,7 @@ This command line should be executed every time you enter the terminal before us
 ```
 conda activate NeuronMotif
 ```
+
+To use NeuronMotif, please go to directory [NeuronMotif](https://github.com/wzthu/NeuronMotif/tree/master/nm) and read the instructions in README.md.
+
+To run the demos or apply NeuronMotif to DeepSEA/DD-10/Basset/BD-10, please go to correspoinding directory and read the README.md in the directory.

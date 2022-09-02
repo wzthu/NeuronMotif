@@ -1,8 +1,11 @@
-nm/*/*/layer*
-nm/*/layer*
+demos/demo1/__pycache__
+*/*/*/layer*
+*/*/layer*
 */*/*/nohup*
 */*/nohup*
-nm*/*/*/motifDB.txt
-nm*/*/*/weight.hdf5
-nm*/*/*/__pycache__
-nm*/*/__pycache__
+*/*/*/motifDB.txt
+*/*/*/weight.hdf5
+*/*/*/__pycache__
+*/*/__pycache__
+*/__pycache__
+

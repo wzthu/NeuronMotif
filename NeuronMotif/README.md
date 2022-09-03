@@ -78,7 +78,7 @@ Bash run.layer.sh 10 512 10
 ```
 
 
-the results of  HTML files in vis folder of corresponding layer folder.
+The HTML, PPM and tomtom results are stored in the folder of corresponding layer folder.
 
 | Files                                            | Contains                                           |
 |--------------------------------------------------|----------------------------------------------------|

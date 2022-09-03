@@ -49,3 +49,21 @@ bash run.layer.sh 2 200 20
 bash run.layer.sh 3 200 20
 ```
 
+
+
+The HTML, PPM and tomtom results are stored in the folder of corresponding layer folder.
+
+| Files                                            | Contains                                           |
+|--------------------------------------------------|----------------------------------------------------|
+| layer[Layer#]/[Neuron#].html                     | Visualization of CN CRMs                           |
+| layer[Layer#]/tree.[Neuron#].html                | Visualization of syntax tree for CN CRMs           |
+| layer[Layer#]/kernel-[Neuron#].all.ppm.chen      | PPMs of CN CRMs in chen format                     |
+| layer[Layer#]/kernel-[Neuron#].all.ppm.meme      | PPMs of CN CRMs in meme format                     |
+| layer[Layer#]/kernel-[Neuron#].h5                | sequence sample                                    |
+| layer[Layer#]/kernel-[Neuron#].ppm.h5            | PPMs/activation/indicators of CN CRMs in h5 format |
+| layer[Layer#]/kernel-[Neuron#]-segs.chen         | PPMs of CRMs segments                              |
+| layer[Layer#]/kernel-[Neuron#]-segs-dict         | motif segment mapped to dictionary                 |
+| layer[Layer#]/tomtom_dict_[Neuron#]              | motif dictionary mapped to tomtom                  |
+| layer[Layer#]/kernel-[Neuron#]-unified-dict.chen | PPMs of motifs in dictionary (chen format)         |
+| layer[Layer#]/kernel-[Neuron#]-unified-dict.h5   | PPMs of motifs in dictionary (h5 format)           |
+| layer[Layer#]/kernel-[Neuron#]-unified-dict.meme | PPMs of motifs in dictionary (meme format)         |

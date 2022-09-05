@@ -91,6 +91,7 @@ def get_model_list(layer, kernel, weight_file='weight.hdf5'):
 ####################################################
 # Step 2:
 # Fill kernel_nb, kernel_sz and pool_sz according your model
+# if there is no pooling operation, the pooling size is 1
     kernel_nb = [128,128,160,160,256,256,384,384,512,512]
     kernel_sz = [7,3,3,3,3,3,3,3,3,3]
     pool_sz = [1,2,1,2,1,2,1,2,1,2]
@@ -109,8 +110,8 @@ def get_model_list(layer, kernel, weight_file='weight.hdf5'):
 # Fill your own deep convolutional neural network structure and,
 # Before activation function, add  'model_list.append(Model(inputs = [seqInput], outputs = [seq]))'
 # After convolution function, add 'act_model_list.append(Model(inputs = [seqInput], outputs = [seq]))'
-# Note: the names of each tensors or layers should be removed!!!!!
-# e.g. Conv1D(128, 7, name='conv1_128_7') should be written as Conv1D(128, 7)
+# Note: the names and padding of each tensors or layers should be removed!!!!!
+# e.g. Conv1D(128, 7, name='conv1_128_7', padding='same') should be written as Conv1D(128, 7)
 # We also take BD-10 as an example
     seq = Conv1D(128, 7)(seqInput)
     act_model_list.append(Model(inputs = [seqInput], outputs = [seq]))

@@ -11,8 +11,8 @@
 #Examples:
 #1 hard syntax motif CTCF
 #1 hard syntax motif CTCF-[5bp]-CTCF
-#2 hard-syntax motifs  CTCF-[5bp]-CTCF-[3~5bp] 
-#3 hard-syntax motifs  CTCF-[3~5bp]-CTCF-[3~5bp]
+#2 hard-syntax motifs  CTCF-[5bp]-CTCF-[3~5bp]-CTCF 
+#3 hard-syntax motifs  CTCF-[3~5bp]-CTCF-[3~5bp]-CTCF
 
 
 

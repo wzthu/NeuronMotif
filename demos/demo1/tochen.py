@@ -103,7 +103,7 @@ for i in range(psize):
             lst.append(ismtf.shape[0]-1)
         print(lst)
         for p in range(0,len(lst),2): 
-            if lst[p+1]-lst[p]+1 <= 8:
+            if lst[p+1]-lst[p]+1 <= 6:
                 continue
             lines1.append('>%04d_%d_%.4f_%.4f_%03d_%03d\n' %(i,spnumb, act.max(), conact,lst[p], lst[p+1]))
             lines2.append('>%04d_%d_%.4f_%.4f_%03d_%03d\n' %(i,spnumb, act.max(), conact,lst[p], lst[p+1]))

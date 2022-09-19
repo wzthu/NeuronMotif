@@ -49,6 +49,16 @@ bash run.layer.sh 2 200 20
 bash run.layer.sh 3 200 20
 ```
 
+The HTML visualization results are organized in each layer folder of  HTML folder. You can visualize them by web browser:
+
+| Files                                            | Contains                                           |
+|--------------------------------------------------|----------------------------------------------------|
+| HTML/layer[Layer#]/[Neuron#].html                | Visualization of CN CRMs                           |
+| HTML/layer[Layer#]/tree.[Neuron#].html           | Visualization of syntax tree for CN CRMs           |
+| HTML/layer[Layer#]/tomtom_[Neuron#].sel.ppm.meme | some motif segment mapped to database              |
+| layer[Layer#]/tomtom_dict_[Neuron#]              | motif dictionary mapped to database                |
+
+
 
 
 The HTML, PPM and tomtom results are stored in the folder of corresponding layer folder.

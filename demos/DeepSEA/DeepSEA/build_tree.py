@@ -741,7 +741,7 @@ long_motif_idx = {}
 for k in list(f.keys()):
     if k.startswith('ppm'):
         long_motif_ppm[k[len('ppm'):]] = f[k][:]
-#        long_motif_ppm[k[len('ppm'):]] = long_motif_ppm[k[len('ppm'):]][:,[0,2,1,3]]
+        long_motif_ppm[k[len('ppm'):]] = long_motif_ppm[k[len('ppm'):]][:,[0,2,1,3]]
         long_motif_act[k[len('ppm'):]] = f['conact' + k[len('ppm'):]][:].max()
         long_motif_idx[k[len('ppm'):]] = f['index' + k[len('ppm'):]][:]
 

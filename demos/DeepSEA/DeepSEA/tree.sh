@@ -8,5 +8,5 @@ if [[ ! -e $lk ]]; then
     python build_segment.py $layer $kernel
     python build_dict.py $layer $kernel
     CUDA_VISIBLE_DEVICES=-1 python build_tree.py $layer $kernel
-    tomtom --norc  layer$layer/kernel-$kernel-unified-dict.meme  motifDB.txt -oc layer$layer/tomtom_dict_$kernel
+    tomtom layer$layer/kernel-$kernel-unified-dict.meme  motifDB.txt -oc layer$layer/tomtom_dict_$kernel
 fi

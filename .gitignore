@@ -1,6 +1,11 @@
 demos/demo1/__pycache__
+demos/demo2/__pycache__
 */*/*/layer*
 */*/layer*
+*/layer*
+*/*/*/HTML
+*/*/HTML
+*/HTML
 */*/*/nohup*
 */*/nohup*
 */*/*/motifDB.txt

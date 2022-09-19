@@ -108,6 +108,7 @@ for i in range(i_max+1):
             continue
         ppm_id = '%8d_%.3f_%.3f_%d' % (i,f['act%d' % (i)][:].max(), f['conact%d' % (i)][0],f['act%d' % (i)].shape[0])
         ppm = f['ppm%d' % (i)][:]
+        ppm = ppm[:,[0,2,1,3]]
         ppm_js = ppm2js(ppm, ppm_id, width, height)
         ppm_jss.append(ppm_js)
         ppm_ids.append('<tr><td>%s</td><td><a href="tomtom_%s.sel.ppm.meme/tomtom.html">TomtomLink</a></td><td><canvas id="%s"></canvas></td></tr>' % (ppm_id,sys.argv[2], ppm_id))

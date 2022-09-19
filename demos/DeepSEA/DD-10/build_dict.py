@@ -5,7 +5,6 @@ from segment import *
 import numpy as np
 import h5py    
 import sys
-
 layer = str(sys.argv[1])
 kernel = str(sys.argv[2])
 
@@ -52,7 +51,7 @@ for ppmid in ppmids:
     I2.append(f['act' + ppmid][:].max())
     sp_sizes.append(f['index' + ppmid].shape[0])
     ppms.append(f['ppm' + ppmid][:])
-#    ppms[-1] = ppms[-1][:,[0,2,1,3]]
+    ppms[-1] = ppms[-1][:,[0,2,1,3]]
 
 seg_ppms = [ppm_segment(ppms[i],smooth=True, sp_size=sp_sizes[i],flank = flanking, shortest = None) for i in range(len(ppms)) ]
 
@@ -122,7 +121,7 @@ while True:
     tomtom = tomtom.loc[tomtom.loc[:,'Orientation']!='-',:]
     print(tomtom)
     print(sel_ppmids)
-    tomtom = tomtom.iloc[::-1,:]
+#    tomtom = tomtom.iloc[::-1,:]
     motif_gp = []
     for i in range(tomtom.shape[0]):
         qid = tomtom.iloc[i,0] #'Query_ID'
@@ -148,8 +147,19 @@ while True:
     motifnames = []
     with h5py.File('layer' + str(layer)+ '/kernel-'+str(kernel)+'-unified-dict.h5','w') as motif_file:
         for gp in motif_gp:
-            motifnames.extend(list(gp))
-            motif_id = list(gp)[0]
+            gp_sort = list(gp)
+            gp_sort.sort()
+            motifnames.extend(gp_sort)
+            size_mx = 0
+            size_mx_id = 0
+            for i in range(len(gp_sort)):
+                motif_id = gp_sort[i]
+                st = int(motif_id.split('_')[1])
+                ed = int(motif_id.split('_')[2])
+                if ed-st > size_mx :
+                    size_mx = ed-st
+                    size_mx_id = i
+            motif_id = list(gp_sort)[size_mx_id]
             ppmid = motif_id.split('_')[0]
             ppmid_list.append(ppmid)
             for i in range(len(ppmids)):
@@ -181,6 +191,7 @@ while True:
     tomtom = tomtom.loc[tomtom.loc[:,'Orientation']!='-',:]
     for j in range(len(motif_gp)-1,-1,-1):
         gp =list(motif_gp[j])
+        gp.sort()
         for i in  range(len(gp)-1,-1,-1):
             sm = np.sum(tomtom['q-value'][tomtom.iloc[:,1] == gp[i]]<10e-5)
             print(sm)
@@ -204,8 +215,7 @@ while True:
         unselect = sel.sum()
     else:
         autodetect = False
-        sel_ppmids = sel_ppmids[:-1]
-
+#        sel_ppmids = sel_ppmids[:-1]
 
 
 segnames = []

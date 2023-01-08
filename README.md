@@ -56,7 +56,8 @@ User can also apply to their own model in Code Ocean by modifying the files in d
 
 If docker is installed in the server, the user can download the Code Ocean capsule (docker image):
 
-[https://bioinfo-xwwang-thu.cn/zwei/NeuronMotif/download/dockerimage.zip](https://bioinfo-xwwang-thu.cn/zwei/NeuronMotif/download/dockerimage.zip)
+https://cloud.tsinghua.edu.cn/d/69d1c6eeae664ee5843f/
+
 
 It is easy to follow the instructions in the package (REPRODUCING.md) to run and reproduce the result of the two demos. All required dependent software is install in the docker image. User can use the docker container to run NeuronMotif.
 

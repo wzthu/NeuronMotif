@@ -19,7 +19,7 @@ Feel free to contact Zheng Wei for any issues or difficulties:
     + Architecture of CNN Model
     + H5 weight file of CNN model
 
-* Ouput of NeuronMotif:
+* Output of NeuronMotif:
     + HTML of CN cis-regulatory module (CRM) 
     + HTML of syntax rule for each CN
     + Position probability matrix of discovered motifs and CN CRMs
@@ -42,11 +42,68 @@ The contains in the directorise:
 
 Result of DeepSEA/DD-10/Basset/BD-10 is available at [NeuronMotif website](https://wzthu.github.io/NeuronMotif/).
 
+Before using this repository, users should install the dependent software following the instruction:
 
-Before using this repository, users should install the dependent software following the instruction at the end of this file.
+
+# Run reproducible demos in Code Ocean
+
+We have built NeuronMotif capsule in Code Ocean. Users can run and obtain the reproducible result of the two demos. 
+
+User can also apply to their own model in Code Ocean by modifying the files in data/ and code/. Please follow the instructions of the docker approach.
 
 
-# Installation
+# Installation through docker
+
+If docker is installed in the server, the user can download the Code Ocean capsule (docker image):
+
+[https://bioinfo-xwwang-thu.cn/zwei/NeuronMotif/download/dockerimage.zip](https://bioinfo-xwwang-thu.cn/zwei/NeuronMotif/download/dockerimage.zip)
+
+It is easy to follow the instructions in the package (REPRODUCING.md) to run and reproduce the result of the two demos. All required dependent software is install in the docker image. User can use the docker container to run NeuronMotif.
+
+## Apply to user's model
+
+### Replace data file
+
+Replace weight.hdf5 in data/demo1 or data/demo2 with the user's model weight file.
+ 
+Download the motif database. Take JASPAR as an example:
+
+```
+wget --no-check-certificate  -O  motifDB.txt  https://jaspar.genereg.net/download/data/2022/CORE/JASPAR2022_CORE_vertebrates_non-redundant_pfms_meme.txt
+```
+Replace data/motifDB.txt
+
+### Configure the DCNN model structure of the user's DCNN model
+
+Modify code/demo1/modeldef.py or code/demo2/modeldef.py according to your CNN model structure.
+You need to follow the comments in modeldef.py to modify the modeldef.py.
+We show the examples for DeepSEA, DD-10, Basset, BD-10. It is easy to learn the way to fill your own structure from the examples of these models.
+
+## Modify the scripts to run layerwisely
+
+Modify code/demo1/script.sh or code/demo2/script.sh accroding to your CNN model
+
+Run NeuronMotif algorithm layer by layer with the script 'run.layer.sh'.
+
+The parameter of run.layer.sh:
+
+* 1st, layer number, start from 1
+
+* 2nd, kernels number in this layer
+
+* 3rd, the max threads number to be used.
+
+* 4th, (optional) the number of flexible motifs recognized by the convolutional neuron. Default: NeuronMotif detects automatically.
+
+It depends on the total CPU cores in this computer and is limited by memory size.
+Be careful to set large threads. The memory is easy to be stuffed.
+
+## Run NeuronMotif 
+
+Please also refer to REPRODUCING.md in the package.
+
+
+# Installation through anaconda
 
 We test this repository in a CentOS 7 computer cluster with 4 nodes, each of which contains 28 cores and 128 GB memory. About 10 TB is consumed for obtaining the result of all examples in the manuscripts. The installation lasts for ~10 min if there are no more dependent packages.
 
@@ -79,9 +136,19 @@ pip install keras==2.3.1
 
 ## Install visualization dependences
 
-Download and install meme-suit to get tomtom first:
+Install meme-suit to get tomtom first:
 
-version: 5.1.0, later version does not support >100 bp receptive field.
+User can install [meme](https://anaconda.org/bioconda/meme) through Conda/Bioconda . (If user do not install Bioconda, please visit [https://bioconda.github.io/](https://bioconda.github.io/)
+)
+
+```
+conda install meme
+```
+
+
+Or
+
+For the user want to match/locate motif from longer PPM, please install version: 5.1.0, later version does not support >100 bp receptive field.
 
 Download:
 

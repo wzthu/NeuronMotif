@@ -139,15 +139,7 @@ pip install keras==2.3.1
 
 Install meme-suit to get tomtom first:
 
-User can install [meme](https://anaconda.org/bioconda/meme) through Conda/Bioconda . (If user do not install Bioconda, please visit [https://bioconda.github.io/](https://bioconda.github.io/)
-)
 
-```
-conda install meme
-```
-
-
-Or
 
 For the user want to match/locate motif from longer PPM, please install version: 5.1.0, later version does not support >100 bp receptive field.
 

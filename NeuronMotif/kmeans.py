@@ -87,7 +87,7 @@ print('finish1')
 
 from sklearn.cluster import KMeans,MiniBatchKMeans
 def cluster_motif(allseqs, layer, index):
-    if layer==0 or index.shape[0]< pool_sz[layer-1]:
+    if layer==0 or index.shape[0]< pool_sz[layer-1] or index.shape[0]< 50:
         return [index]
     thisseqs = allseqs[index,:,:]
     thisvs = allvs[index]
@@ -113,9 +113,9 @@ def resample_top(ponehots, pvalues):
     maxpvalues = np.max(pvalues)
     vlist = []
     sellist = []
-    for j in range(50,0,-1):
-        low = (maxpvalues * (j-1))/50
-        high = (maxpvalues * j)/50
+    for j in range(20,0,-1):
+        low = (maxpvalues * (j-1))/20
+        high = (maxpvalues * j)/20
         sel = np.logical_and(low < pvalues, pvalues <= high)
         sellist.append(sel)
         if sel.sum()>0:
@@ -167,9 +167,9 @@ for i in range(len(clist)):
     maxpvalues = np.max(pvalues)
     pfmlist = []
     vlist = []
-    for j in range(50,0,-1):
-        low = (maxpvalues * (j-1))/50 
-        high = (maxpvalues * j)/50 
+    for j in range(20,0,-1):
+        low = (maxpvalues * (j-1))/20 
+        high = (maxpvalues * j)/20 
         sel = np.logical_and(low < pvalues, pvalues <= high)
         if sel.sum()>0:
             singlePfm = ponehots[sel,:,:]

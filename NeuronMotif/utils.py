@@ -108,16 +108,16 @@ def val_uniq_seq(allseqs, allvals, max_sample=None):
         sellist = []
         sizes = []
         sizes1 = []
-        for j in range(50,0,-1):
-            low = (maxpvalues * (j-1))/50
-            high = (maxpvalues * j)/50
+        for j in range(20,0,-1):
+            low = (maxpvalues * (j-1))/20
+            high = (maxpvalues * j)/20
             sel = np.logical_and(low < allvals, allvals <= high)
             sel = np.arange(allseqs.shape[0])[sel]
             sizes.append(sel.shape[0])
-            if sel.shape[0] < max_sample /50:
+            if sel.shape[0] < max_sample /20:
                 sellist.append(sel)
             else:
-                sellist.append(np.random.choice(sel,int(max_sample/50),replace=False))
+                sellist.append(np.random.choice(sel,int(max_sample/20),replace=False))
             sizes1.append(sellist[-1].shape[0])
         sellist = np.concatenate(sellist, axis=0)        
         allseqs = allseqs[sellist,:,:]

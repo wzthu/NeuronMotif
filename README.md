@@ -128,7 +128,7 @@ pip install h5py==2.10.0
 pip install matplotlib
 pip install pandas
 pip install numpy
-pip install sklearn
+pip install scikit-learn
 pip install tensorflow==1.15.0
 pip install keras==2.3.1
 

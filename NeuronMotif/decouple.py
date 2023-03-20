@@ -23,6 +23,7 @@ for i in range(int(layer)-1):
 
 if motif_nb is not None:
     os.system('bash idx.sh %d  | xargs -n 1 -P %s  bash decouple.sh %s %d' %(kernel_size, threads, layer, motif_nb))
+    os.system('python merge.py %s %d' % (layer,motif_nb))
 else:
     motif_nb = 1
     while True:

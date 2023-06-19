@@ -229,6 +229,6 @@ This command line should be executed every time you enter the terminal before us
 conda activate NeuronMotif
 ```
 
-To use NeuronMotif, please go to directory [NeuronMotif](https://github.com/wzthu/NeuronMotif/tree/master/nm) and read the instructions in README.md.
+To use NeuronMotif, please go to directory [NeuronMotif](https://github.com/wzthu/NeuronMotif/tree/master/NeuronMotif) and read the instructions in README.md.
 
 To run the demos or apply NeuronMotif to DeepSEA/DD-10/Basset/BD-10, please go to correspoinding directory and read the README.md in the directory.

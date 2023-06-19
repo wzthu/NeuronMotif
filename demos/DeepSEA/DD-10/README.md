@@ -1,5 +1,5 @@
 
-Please read the README in the folder [code](https://github.com/wzthu/NeuronMotif/tree/master/nm/code) first.
+Please read the README in the folder [code](https://github.com/wzthu/NeuronMotif/tree/master/NeuronMotif) first.
 
 # Enter NeuronMotif environment
 

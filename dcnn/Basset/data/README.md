@@ -5,7 +5,7 @@ Download the data for training the DCNN:
 ```
 wget  --no-check-certificate   http://bioinfo-xwwang-thu.cn/zwei/NeuronMotif/DCNN_train/Basset_data.tar.gz
 ```
-Alternatively, if the link above is not available temperately, you can download from https://cloud.tsinghua.edu.cn/d/fee522536d524eae9531/files/?p=%2FDCNN_train%2FBasset_data.tar.gz&dl=1
+
 
 ```
 tar -xzvf Basset_data.tar.gz

@@ -1,15 +1,15 @@
 # Introduction of NeuronMotif
 
-NeuronMotif is an algorithm for interpreting the patterns learned by deep convolutional neurons (DCN) in DCNN. For a DCNN based on DNA sequences, it can convert the substructure weight of a DCN into DNA sequence motifs. DNA can be considered a new language so the task of NeuronMotif is to uncover the motif and motif grammar embedded in DCNs.
+NeuronMotif is an algorithm for interpreting the patterns learned by deep convolutional neurons (DCN) in deep convolutional neural networks(DCNN). For a DCNN based on DNA sequences, NeuronMotif can convert the substructure weight of a DCN into DNA sequence motifs. DNA can be considered a new language so the task of NeuronMotif is to uncover the motif and motif grammar embedded in DCNs.
 
 ![](https://github.com/wzthu/NeuronMotif/blob/master/Goal.jpg)
 
 
 # NeuronMotif Software
 
-This repository implements the NeuronMotif algorithm in ["NeuronMotif: Deciphering cis-regulatory codes by layerwise de-mixing of deep neural networks"](https://www.biorxiv.org/content/10.1101/2021.02.10.430606v1) by Zheng Wei et al.
+This repository implements the NeuronMotif algorithm in ["NeuronMotif: Deciphering cis-regulatory codes by layer-wise demixing of deep neural networks"](https://doi.org/10.1073/pnas.2216698120) by Zheng Wei et al.
 
-This repository includes the code for generating the result in the paper. We also provide the instructions for users to apply NeuronMotif to their own models. 
+This repository includes the code for generating the result in the paper. We also provide instructions for users to apply NeuronMotif to their own models. 
 
 Feel free to contact Zheng Wei for any issues or difficulties:
 + Email: weiz(at)tsinghua.edu.cn
